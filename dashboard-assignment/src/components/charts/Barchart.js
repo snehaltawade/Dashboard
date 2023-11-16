@@ -1,9 +1,9 @@
 import * as d3 from "d3";
 import { useEffect, useRef, useState } from "react";
-import ChatWrapper from "./ChartWrapper";
+import ChartWrapper from "./ChartWrapper";
 
 const Barchart=()=>{
-    const [data]=useState([200,250,60,150,100,175]);
+    const [data]=useState([100,90,20,70,50,85]);
     const svgRef = useRef()
 
     useEffect(()=>{
@@ -18,7 +18,7 @@ const Barchart=()=>{
         const xScale = d3.scaleBand()
                         .domain(data.map((val,i)=>i))
                         .range([0,w])
-                        .padding(0.5)
+                        .padding(0.8)
         const yScale = d3.scaleLinear()
                          .domain([0,h])
                          .range([h,0])
@@ -31,9 +31,11 @@ const Barchart=()=>{
         svg.append('g')
             .call(xAxis)
             .attr('transform',`translate(0, ${h})`)
+            .attr("class", "x-axis")
 
-        svg.append('g')
-            .call(yAxis)
+        // svg.append('g')
+        //     .call(yAxis)
+            
 
         //setting the svg data
         svg.selectAll('.bar')
@@ -43,11 +45,15 @@ const Barchart=()=>{
             .attr('y',yScale)
             .attr('width',xScale.bandwidth())
             .attr('height',val=>h-yScale(val))
+            .attr('rx', 5)
+            .attr("fill",'#339c45')
     },[data])
 
     return(
         <>
+        <ChartWrapper>
         <svg ref={svgRef}></svg>
+        </ChartWrapper>
         </>
     )
 }

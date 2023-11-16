@@ -1,6 +1,6 @@
 import { styled } from "@mui/material";
 
-const ChatWrapper = styled('div')(({ theme }) => ({
+const ChartWrapper = styled('div')(({ theme }) => ({
     '.x-axis line':{
         stroke: 'transparent',
       },
@@ -14,4 +14,4 @@ const ChatWrapper = styled('div')(({ theme }) => ({
     
   }));
 
-export default ChatWrapper;
+export default ChartWrapper;

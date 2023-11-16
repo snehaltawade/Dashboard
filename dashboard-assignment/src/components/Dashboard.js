@@ -21,6 +21,8 @@ import AppBar from './appbar/Appbar';
 import LineGraph from './charts/LineGraph';
 import InvoicesTab from './invoices/InvoicesOwed';
 import StackedBarChart from './charts/StackedBarChart';
+import AccountCheck from './accountCheck/AccountCheck';
+import TotalCashFlow from './totalCashFlow/TotalCashFlow';
 
 
 
@@ -85,28 +87,29 @@ React.useEffect(()=>{
                     p: 2,
                     display: 'flex',
                     flexDirection: 'column',
-                    height: 240,
+                    minHeight: '250px'
                   }}
                 >
-                 <LineGraph/>
+                <AccountCheck/>
                 </Paper>
               </Grid>
               {/* Recent Deposits */}
               <Grid item xs={12} md={6} lg={6}>
-                <Paper
+                <Paper  
                   sx={{
                     p: 2,
                     display: 'flex',
                     flexDirection: 'column',
-                    height: 240,
+                    minHeight: '250px',
+                    height: '250px'
                   }}
                 >
                   <InvoicesTab/>
                 </Paper>
               </Grid>
               <Grid item xs={12} md={6} lg={6}>
-                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column', }}>
-                   <StackedBarChart/>
+                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column',minHeight: '250px',}}>
+                   <TotalCashFlow/>
                 </Paper>
               </Grid>
               <Grid item xs={12} md={6} lg={6}>

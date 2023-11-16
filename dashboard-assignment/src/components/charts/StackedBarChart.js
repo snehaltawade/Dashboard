@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
+import ChartWrapper from "./ChartWrapper";
+
+
 
 const StackedBarChart=()=>{
     
@@ -44,9 +47,10 @@ const StackedBarChart=()=>{
         svg.append('g')
             .call(xAxis)
             .attr('transform',`translate(0, ${h})`)
+            .attr("class", "x-axis")
 
-        svg.append('g')
-            .call(yAxis)
+        // svg.append('g')
+        //     .call(yAxis)
 
         // color palette = one color per subgroup
         const color = d3.scaleOrdinal()
@@ -68,8 +72,6 @@ const StackedBarChart=()=>{
             .keys(subgroups)
             (data)
 
-            const rx = 12;
-const ry = 12;
         //setting the svg data
         svg.append("g")
     .selectAll("g")
@@ -80,27 +82,21 @@ const ry = 12;
       .selectAll("rect")
       // enter a second time = loop subgroup per subgroup to add all rectangles
       .data(d => d)
-    //   .join("rect")
-    //     .attr("x", d => xScale(d.data.group))
-    //     .attr("y", d => yScale(d[1]))
-    //     .attr("height", d => yScale(d[0]) - yScale(d[1]))
-    //     .attr("width",xScale.bandwidth())
+      .join("rect")
+        .attr("x", d => xScale(d.data.group))
+        .attr("y", d => yScale(d[1]))
+        .attr("height", d => yScale(d[0]) - yScale(d[1]))
+        .attr("width",xScale.bandwidth())
 
-    .attr("d", d => `
-        M${d => xScale(d.data.group)},${d => yScale(d[1]) + ry}
-        a${rx},${ry} 0 0 1 ${rx},${-ry}
-        h${xScale.bandwidth() - 2 * rx}
-        a${rx},${ry} 0 0 1 ${rx},${ry}
-        v${d => yScale(d[0]) - yScale(d[1]) - ry}
-        h${-(xScale.bandwidth())}Z
-      `);
        
     },[data])
 
 
     return(
         <>
+        <ChartWrapper>
          <svg ref={svgRef}></svg>
+         </ChartWrapper>
         </>
     )
 }

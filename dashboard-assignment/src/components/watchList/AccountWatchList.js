@@ -5,6 +5,7 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import { Typography } from '@mui/material';
 
 // Generate Order Data
 function createData(id, accountName, thisMonth, YTD) {
@@ -15,26 +16,26 @@ const rows = [
   createData(
     0,
     'Sales',
-    'VISA ⠀•••• 3719',
+    '1968.59',
     312.44,
   ),
   createData(
     1,
     'Advertising',
-    'VISA ⠀•••• 2574',
+    '1968.59',
     866.99,
   ),
-  createData(2, 'Invetory','MC ⠀•••• 1253', 100.81),
+  createData(2, 'Invetory','1968.59', 100.81),
   createData(
     3,
     'Entertainment',
-    'VISA ⠀•••• 5919',
+    '1968.59',
     212.79,
   ),
   createData(
     4,
     'Product',
-    'VISA ⠀•••• 5919',
+    '1968.59',
     212.79,
   ),
 ];
@@ -46,7 +47,7 @@ function preventDefault(event) {
 export default function AccountWatchList() {
   return (
     <React.Fragment>
-      <h3>Account WatchList</h3>
+      <Typography  variant='h6' fontWeight={'700'}>Account WatchList</Typography>
       <Table size="small" >
         <TableHead>
           <TableRow style={{borderBottom:'hidden'}}>
@@ -60,7 +61,7 @@ export default function AccountWatchList() {
             <TableRow key={row.id} style={{borderBottom:'hidden'}}>
               <TableCell>{row.accountName}</TableCell>
               <TableCell>{row.thisMonth}</TableCell>
-              <TableCell align="right">{`$${row.YTD}`}</TableCell>
+              <TableCell>{`${row.YTD}`}</TableCell>
             </TableRow>
           ))}
         </TableBody>

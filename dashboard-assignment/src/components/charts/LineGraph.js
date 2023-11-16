@@ -2,15 +2,16 @@ import { useEffect, useRef, useState } from "react";
 import * as d3 from 'd3';
 import ChatWrapper from "./ChartWrapper";
 
-const LineGraph=()=>{
+const LineGraph=({data})=>{
 
-    const [data] = useState([10,30,85,105,90,50,25,75,90,80,20,47,55,45,10,40])
+    // const [data] = useState([10,30,85,105,90,50,25,75,90,80,20,47,55,45,10,40])
     const svgRef=useRef()
 
     useEffect(()=>{
         //setting p svg
+        d3.selectAll("svg > *").remove();
         const w=500
-        const h=200
+        const h=150
         const svg=d3.select(svgRef.current)
                     .attr('width',w)
                     .attr('height',h)
